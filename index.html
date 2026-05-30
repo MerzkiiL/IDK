@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenCode 2026 — Starter Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1D9E75;
+    --green-dark: #0F6E56;
+    --green-light: #E1F5EE;
+    --text: #111;
+    --muted: #666;
+    --border: #e5e5e5;
+    --bg: #fafaf8;
+    --white: #fff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  
+  .hero { background: var(--green); color: white; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-bottom: 0.75rem; }
+  .hero h1 { font-size: clamp(24px, 5vw, 38px); font-weight: 600; margin-bottom: 0.5rem; }
+  .hero p { font-size: 16px; opacity: 0.85; max-width: 480px; margin: 0 auto; }
 
+  .container { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.25rem; }
+
+  .section { margin-bottom: 2.5rem; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); font-weight: 500; margin-bottom: 0.5rem; }
+  .section-title { font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+  .section-desc { font-size: 14px; color: var(--muted); margin-bottom: 1.25rem; }
+
+  .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; }
+  .card-title { font-size: 15px; font-weight: 600; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.5rem; }
+  .card-desc { font-size: 14px; color: var(--muted); margin-bottom: 0.75rem; }
+  .card-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 13px; font-weight: 500; color: var(--green); text-decoration: none; background: var(--green-light); padding: 5px 12px; border-radius: 20px; }
+  .card-link:hover { background: #c8eddf; }
+  .card-badge { font-size: 10px; font-weight: 600; background: #fff3cd; color: #8a6400; padding: 2px 8px; border-radius: 20px; }
+
+  .steps { counter-reset: step; }
+  .step { display: flex; gap: 1rem; margin-bottom: 1rem; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; }
+  .step-num { counter-increment: step; min-width: 28px; height: 28px; background: var(--green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; flex-shrink: 0; margin-top: 2px; }
+  .step-num::before { content: counter(step); }
+  .step-content { flex: 1; }
+  .step-title { font-size: 15px; font-weight: 600; margin-bottom: 0.25rem; }
+  .step-desc { font-size: 14px; color: var(--muted); }
+  .step-code { font-family: 'DM Mono', monospace; font-size: 13px; background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px; padding: 8px 12px; margin-top: 0.5rem; color: #333; }
+
+  .tip { background: var(--green-light); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 0.85rem 1.1rem; margin-bottom: 0.75rem; font-size: 14px; color: #0F6E56; }
+  .tip strong { font-weight: 600; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.75rem; }
+
+  .track-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .track-title { font-size: 14px; font-weight: 600; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+  .track-link { display: block; font-size: 13px; color: var(--green); text-decoration: none; padding: 4px 0; border-bottom: 1px solid var(--border); }
+  .track-link:last-child { border-bottom: none; }
+  .track-link:hover { color: var(--green-dark); }
+  .track-link-desc { font-size: 12px; color: var(--muted); display: block; }
+
+  .footer { text-align: center; padding: 2rem 1rem; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 1rem; }
+  .footer a { color: var(--green); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">GreenCode Hacks 2026</div>
+  <h1>Starter Kit</h1>
+  <p>Everything you need to set up and start building today. Read this before you write a single line of code.</p>
+</div>
+
+<div class="container">
+
+  <!-- SETUP -->
+  <div class="section">
+    <div class="section-label">Step 0</div>
+    <div class="section-title">Install these before you start</div>
+    <div class="section-desc">You only need two things. Everything else is optional.</div>
+
+    <div class="card">
+      <div class="card-title">💻 VS Code</div>
+      <div class="card-desc">The most popular code editor in the world. Free, fast, and works for every language. If you already have a code editor you like, that's totally fine too.</div>
+      <a class="card-link" href="https://code.visualstudio.com" target="_blank">Download VS Code →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🐙 GitHub Account</div>
+      <div class="card-desc">Where your code will live. You'll use this to share your project with judges. Pick a username that looks good on a resume — this account will follow you for years.</div>
+      <a class="card-link" href="https://github.com" target="_blank">Create GitHub account →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🖱️ GitHub Desktop <span class="card-badge">Recommended for beginners</span></div>
+      <div class="card-desc">If the command line scares you, GitHub Desktop lets you do everything with clicks. Upload code, sync with your team, and never touch a terminal. Highly recommended if this is your first time using Git.</div>
+      <a class="card-link" href="https://desktop.github.com" target="_blank">Download GitHub Desktop →</a>
+    </div>
+  </div>
+
+  <!-- GIT GUIDE -->
+  <div class="section">
+    <div class="section-label">Step 1</div>
+    <div class="section-title">Set up your team repository</div>
+    <div class="section-desc">One person on your team does this. Everyone else joins. Takes about 5 minutes.</div>
+
+    <div class="tip"><strong>What's a repository?</strong> Think of it as a shared Google Drive folder for your code. Everyone on your team can see it, edit it, and sync their changes.</div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <div class="step-title">One person creates the repository</div>
+          <div class="step-desc">Go to github.com, click the "+" in the top right corner, and select "New repository." Give it a name like "greencode-2026." Set it to Public and click "Create repository."</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <div class="step-title">Add your teammates</div>
+          <div class="step-desc">Go to Settings → Collaborators → Add people. Type in your teammates' GitHub usernames and send them invites.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <div class="step-title">Everyone accepts the invite</div>
+          <div class="step-desc">Teammates check their email or GitHub notifications and accept the collaboration invite. Now everyone has access.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <div class="step-title">Clone the repo to your computer</div>
+          <div class="step-desc">In GitHub Desktop: File → Clone Repository → find yours → choose where to save it. Now the folder is on your laptop and ready to code in.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <div class="step-title">The golden rule: pull before you code, push after you code</div>
+          <div class="step-desc">Every time you sit down to work, hit "Fetch" in GitHub Desktop first to get your teammates' latest changes. When you're done writing something, hit "Commit" and "Push" to send your changes up. This avoids 99% of merge conflicts.</div>
+          <div class="step-code">Pull → Write code → Commit → Push. Repeat.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORKSHOPS BY TRACK -->
+  <div class="section">
+    <div class="section-label">Step 2</div>
+    <div class="section-title">Workshops by track</div>
+    <div class="section-desc">These are beginner-friendly guides written for people exactly like you. Pick your track and start with the first link.</div>
+
+    <div class="grid">
+      <div class="track-card">
+        <div class="track-title">🤖 AI / ML</div>
+        <a class="track-link" href="https://workshops.hackclub.com/teachable_machine/" target="_blank">
+          Teachable Machine
+          <span class="track-link-desc">Train your own image recognition model, no code required</span>
+        </a>
+        <a class="track-link" href="https://platform.openai.com/docs/quickstart" target="_blank">
+          OpenAI Quickstart
+          <span class="track-link-desc">Use GPT in your project with an API</span>
+        </a>
+        <a class="track-link" href="https://workshops.hackclub.com/python_chat_bot/" target="_blank">
+          Python Chatbot
+          <span class="track-link-desc">Build a simple AI chatbot in Python</span>
+        </a>
+      </div>
+
+      <div class="track-card">
+        <div class="track-title">🌐 Web / App</div>
+        <a class="track-link" href="https://workshops.hackclub.com/personal_website/" target="_blank">
+          Build a Personal Website
+          <span class="track-link-desc">HTML and CSS from zero</span>
+        </a>
+        <a class="track-link" href="https://workshops.hackclub.com/todo_app_using_meanjs/" target="_blank">
+          To-Do List App
+          <span class="track-link-desc">Build your first interactive web app</span>
+        </a>
+        <a class="track-link" href="https://pages.github.com" target="_blank">
+          GitHub Pages
+          <span class="track-link-desc">Host your website for free in 2 minutes</span>
+        </a>
+      </div>
+
+      <div class="track-card">
+        <div class="track-title">🛡️ Cyber / Defense</div>
+        <a class="track-link" href="https://workshops.hackclub.com/password_generator/" target="_blank">
+          Password Generator
+          <span class="track-link-desc">Build a secure password tool</span>
+        </a>
+        <a class="track-link" href="https://tryhackme.com/path/outline/beginner" target="_blank">
+          TryHackMe Beginner Path
+          <span class="track-link-desc">Hands-on cybersecurity for beginners</span>
+        </a>
+        <a class="track-link" href="https://workshops.hackclub.com/chrome_extension/" target="_blank">
+          Chrome Extension
+          <span class="track-link-desc">Build a browser tool that protects users</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESIGN RESOURCES -->
+  <div class="section">
+    <div class="section-label">Bonus</div>
+    <div class="section-title">Design and other useful tools</div>
+    <div class="section-desc">Don't waste time making icons or looking for fonts. Use these.</div>
+
+    <div class="card">
+      <div class="card-title">🎨 Figma</div>
+      <div class="card-desc">Free design tool for wireframes and mockups. Use it to sketch your app before you build it, or to design screens you haven't coded yet.</div>
+      <a class="card-link" href="https://figma.com" target="_blank">Open Figma →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✏️ Font Awesome</div>
+      <div class="card-desc">Thousands of free icons you can drop into any website with one line of code. Way faster than making your own graphics.</div>
+      <a class="card-link" href="https://fontawesome.com" target="_blank">Browse icons →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🖼️ Unsplash</div>
+      <div class="card-desc">Free high-quality photos you can use in your project without worrying about copyright. Just download and use.</div>
+      <a class="card-link" href="https://unsplash.com" target="_blank">Browse photos →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🤖 Claude / ChatGPT</div>
+      <div class="card-desc">Stuck on a bug? Paste your code and ask what's wrong. These tools are great for debugging and understanding error messages. That said, we strongly recommend using AI only for debugging, not for writing your entire project. Judges evaluate creativity, problem-solving, and your ability to explain what you built. If AI wrote everything, you won't be able to answer their questions, and that will hurt your score.</div>
+      <a class="card-link" href="https://claude.ai" target="_blank">Open Claude →</a>
+      <a class="card-link" href="https://chat.openai.com" target="_blank" style="margin-left: 0.5rem;">Open ChatGPT →</a>
+    </div>
+  </div>
+
+  <!-- JUDGING -->
+  <div class="section">
+    <div class="section-label">Keep in mind</div>
+    <div class="section-title">What judges actually look for</div>
+    <div class="section-desc">Don't spend 6 hours coding and 30 seconds presenting. Both matter.</div>
+
+    <div class="tip"><strong>Problem and relevance (20 pts)</strong> — Can you explain in one sentence what problem you're solving and who has it?</div>
+    <div class="tip"><strong>Technical execution (25 pts)</strong> — Does your project actually work during the demo? A simple working product beats an ambitious broken one.</div>
+    <div class="tip"><strong>Innovation and creativity (20 pts)</strong> — Did you make at least one interesting or unexpected decision? You don't need to reinvent the wheel, just make it yours.</div>
+    <div class="tip"><strong>User impact (15 pts)</strong> — Who benefits from this? Be specific. "Everyone" is not an answer. "High schoolers who get phishing emails" is.</div>
+    <div class="tip"><strong>Presentation (10 pts)</strong> — Judges should understand what you built within the first 30 seconds. Practice saying it out loud once before you go up.</div>
+  </div>
+
+  <!-- CONTACTS -->
+  <div class="section">
+    <div class="section-label">Need help?</div>
+    <div class="section-title">Wave down a mentor or find us</div>
+    <div class="section-desc">Our mentors are here all day. Don't sit stuck for more than 15 minutes — just ask.</div>
+    <div class="card">
+      <div class="card-title">💬 Discord</div>
+      <div class="card-desc">Join the GreenCode Discord for announcements, Q&A, and updates throughout the day.</div>
+      <a class="card-link" href="https://discord.gg/Zf9hWDZWNS" target="_blank">Join Discord →</a>
+    </div>
+    <div class="card" style="margin-top: 0.75rem">
+      <div class="card-title">📧 Email</div>
+      <div class="card-desc">Questions before or after the event? Reach out anytime.</div>
+      <a class="card-link" href="mailto:greenvillecode@gmail.com">greenvillecode@gmail.com →</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Made with 💚 by the GreenCode Team · <a href="https://greencodehack.com">greencodehack.com</a>
+</div>
+
+</body>
+</html>
